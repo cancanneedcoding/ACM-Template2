@@ -165,9 +165,9 @@ Info operator+(Info a, Info b)
 }
 
 /*
-例如，如果你想要找到线段树中最后一个 cnt 字段值大于 5 的节点，你可以写一个如下的 pred 函数：
+例如，如果你想要找到线段树中最后一个 sum 字段值大于 5 的节点，你可以写一个如下的 pred 函数：
 */
 auto pred = [](const Info &node)
 {
-    return node.cnt > 5;
+    return node.sum > 5;
 };
