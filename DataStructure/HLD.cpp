@@ -1,3 +1,8 @@
+
+/*
+模版来源：jiangly
+树链剖分
+*/
 struct HLD
 {
     int n;
