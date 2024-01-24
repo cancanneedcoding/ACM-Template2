@@ -1,3 +1,8 @@
+/*
+懒标记线段树
+模版来源：jiangly
+支持区间赋值区间修改
+*/
 template <class Info, class Tag>
 struct LazySegmentTree
 {
