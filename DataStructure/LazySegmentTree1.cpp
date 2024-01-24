@@ -1,3 +1,8 @@
+/*
+懒标记线段树
+模版来源：jiangly
+支持功能：单点修改，区间加，区间查询
+*/
 template <class Info, class Tag>
 struct LazySegmentTree
 {
