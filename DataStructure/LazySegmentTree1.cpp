@@ -103,27 +103,6 @@ struct LazySegmentTree
     {
         return rangeApply(1, 0, n, l, r, v);
     }
-    void half(int p, int l, int r)
-    {
-        if (info[p].act == 0)
-        {
-            return;
-        }
-        if ((info[p].min + 1) / 2 == (info[p].max + 1) / 2)
-        {
-            apply(p, {-(info[p].min + 1) / 2});
-            return;
-        }
-        int m = (l + r) / 2;
-        push(p);
-        half(2 * p, l, m);
-        half(2 * p + 1, m, r);
-        pull(p);
-    }
-    void half()
-    {
-        half(1, 0, n);
-    }
 };
 
 constexpr ll inf = 1E18;
