@@ -120,7 +120,7 @@ private:
         if (curHi < targetLo || curLo > targetHi ||
             tree[treeIndex].maxVal < target)
         {
-            // 当前区间与目标区间不重叠或者区间的最大值小于target
+            // 当前区间与目标区间不重叠或者区间的最大值小于 target
             return -1;
         }
         if (curLo == curHi)
