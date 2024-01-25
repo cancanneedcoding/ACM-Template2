@@ -29,7 +29,7 @@ struct HLD
         adj.assign(n, {});
     }
 
-    // 在节点u和v之间添加一条无向边。
+    // 在节点 u 和 v 之间添加一条无向边。
     void addEdge(int u, int v)
     {
         adj[u].push_back(v);
@@ -68,7 +68,7 @@ struct HLD
         }
     }
 
-    // 第二遍深度优先搜索，分配每个节点的进时间戳in[u]，建立重链，并计算每个节点的出时间戳out[u]。
+    // 第二遍深度优先搜索，分配每个节点的进时间戳 in[u]，建立重链，并计算每个节点的出时间戳 out[u]。
     void dfs2(int u)
     {
         in[u] = cur++;
@@ -81,7 +81,7 @@ struct HLD
         out[u] = cur;
     }
 
-    // 计算节点u和v的最近公共祖先（LCA）
+    // 计算节点 u 和 v 的最近公共祖先（LCA）
     int lca(int u, int v)
     {
         while (top[u] != top[v])
@@ -98,13 +98,13 @@ struct HLD
         return dep[u] < dep[v] ? u : v;
     }
 
-    // 计算节点u和v之间的距离。
+    // 计算节点 u 和 v 之间的距离。
     int dist(int u, int v)
     {
         return dep[u] + dep[v] - 2 * dep[lca(u, v)];
     }
 
-    // 在树中从节点u向上跳k步，返回目标节点索引，如果不可能则返回-1。
+    // 在树中从节点 u 向上跳 k 步，返回目标节点索引，如果不可能则返回 -1。
     int jump(int u, int k)
     {
         if (dep[u] < k)
@@ -122,13 +122,13 @@ struct HLD
         return seq[in[u] - dep[u] + d];
     }
 
-    // 判断节点u是否是节点v的祖先
+    // 判断节点 u 是否是节点 v 的祖先
     bool isAncester(int u, int v)
     {
         return in[u] <= in[v] && in[v] < out[u];
     }
 
-    // 在以u为根的树中，找到v的父节点
+    // 在以 u 为根的树中，找到 v 的父节点
     int rootedParent(int u, int v)
     {
         std::swap(u, v);
@@ -160,7 +160,7 @@ struct HLD
         return n - siz[rootedParent(u, v)];
     }
 
-    // 找到 a,b,c 的最近公共祖先
+    // 在根变为 a 的情况下，求 b 与 c 的 LCA
     int rootedLca(int a, int b, int c)
     {
         return lca(a, b) ^ lca(b, c) ^ lca(c, a);
