@@ -1,3 +1,6 @@
+/*
+并查集
+*/
 struct DSU {
     std::vector<int> f, siz;
     
