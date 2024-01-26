@@ -7,6 +7,10 @@ typedef unsigned long long ull;
 const int inf = 0x3f3f3f3f;
 const int mod = 1000000007;
 
+/*
+线段树维护回文，单点修改，区间判断回文
+原题链接：https://atcoder.jp/contests/abc331/tasks/abc331_f
+*/
 template <class Info>
 struct SegmentTree
 {
