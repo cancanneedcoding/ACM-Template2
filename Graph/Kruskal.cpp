@@ -1,3 +1,5 @@
+
+// 并查集模版：https://github.com/cancanneedcoding/ACM-Template2/blob/main/DataStructure/DSU.cpp
 long long kruskal(int n, std::vector<std::array<int, 3>> &edges)
 {
     // 初始化并查集
