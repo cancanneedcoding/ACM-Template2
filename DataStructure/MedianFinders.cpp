@@ -1,3 +1,4 @@
+// 对顶堆：动态维护区间中位数
 class MedianFinder
 {
 private:
