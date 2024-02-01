@@ -3,21 +3,24 @@ class MedianFinder
 {
 private:
     multiset<int> minSet, maxSet;
+    ll sumMinSet = 0, sumMaxSet = 0;
 
     // 调整两个 multiset，保持平衡
     void balanceSets()
     {
-        // 如果最大堆比最小堆多了两个元素，将最大堆的最大元素移动到最小堆
-        if (maxSet.size() > minSet.size() + 1)
+        while (maxSet.size() > minSet.size() + 1)
         {
             auto it = prev(maxSet.end());
+            sumMaxSet -= *it;
+            sumMinSet += *it;
             minSet.insert(*it);
             maxSet.erase(it);
         }
-        // 如果最小堆比最大堆多了一个元素，将最小堆的最小元素移动到最大堆
-        else if (minSet.size() > maxSet.size())
+        while (minSet.size() > maxSet.size())
         {
             auto it = minSet.begin();
+            sumMinSet -= *it;
+            sumMaxSet += *it;
             maxSet.insert(*it);
             minSet.erase(it);
         }
@@ -30,6 +33,8 @@ public:
     {
         minSet.clear();
         maxSet.clear();
+        sumMinSet = 0;
+        sumMaxSet = 0;
     }
 
     void add(int num)
@@ -37,46 +42,53 @@ public:
         if (maxSet.empty() || num <= *maxSet.rbegin())
         {
             maxSet.insert(num);
+            sumMaxSet += num;
         }
         else
         {
             minSet.insert(num);
+            sumMinSet += num;
         }
 
         balanceSets();
     }
 
-    double findMedian()
+    int findMedian()
     {
-        if (maxSet.size() == minSet.size())
-        {
-            return (*maxSet.rbegin() + *minSet.begin()) / 2.0; // 偶数个元素，取平均值
-        }
-        else
-        {
-            return *maxSet.rbegin(); // 奇数个元素，取最大堆的最大值
-        }
+
+        return *maxSet.rbegin();
     }
 
     void removeNum(int num)
     {
-        if (!maxSet.empty() && num <= *maxSet.rbegin())
+        auto itMax = maxSet.find(num);
+        if (itMax != maxSet.end())
         {
-            auto it = maxSet.find(num);
-            if (it != maxSet.end())
-            {
-                maxSet.erase(it);
-            }
+            sumMaxSet -= num;
+            maxSet.erase(itMax);
         }
         else
         {
-            auto it = minSet.find(num);
-            if (it != minSet.end())
+            auto itMin = minSet.find(num);
+            if (itMin != minSet.end())
             {
-                minSet.erase(it);
+                sumMinSet -= num;
+                minSet.erase(itMin);
             }
         }
 
         balanceSets();
+    }
+
+    // 获取最小堆的总和
+    ll getSumMinSet() const
+    {
+        return sumMinSet;
+    }
+
+    // 获取最大堆的总和
+    ll getSumMaxSet() const
+    {
+        return sumMaxSet;
     }
 };
