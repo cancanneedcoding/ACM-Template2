@@ -1,3 +1,5 @@
+
+// 对顶堆：动态维护区间内前 k 小元素之和
 template <typename T>
 class   
 {
