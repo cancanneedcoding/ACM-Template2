@@ -7,31 +7,31 @@ struct Fenwick
     int n;
     std::vector<T> a;
 
-    Fenwick(int n_ = 0)
+    Fenwick(int n = 0)
     {
-        init(n_);
+        init(n);
     }
 
-    void init(int n_)
+    void init(int n)
     {
-        n = n_;
-        a.assign(n, T{});
+        this->n = n;
+        a.assign(n + 1, T());
     }
 
-    void add(int x, const T &v)
+    void add(int x, T v)
     {
-        for (int i = x + 1; i <= n; i += i & -i)
+        for (; x <= n; x += x & (-x))
         {
-            a[i - 1] = a[i - 1] + v;
+            a[x] += v;
         }
     }
 
     T sum(int x)
     {
-        T ans{};
-        for (int i = x; i > 0; i -= i & -i)
+        auto ans = T();
+        for (; x; x -= x & (-x))
         {
-            ans = ans + a[i - 1];
+            ans += a[x];
         }
         return ans;
     }
@@ -40,19 +40,18 @@ struct Fenwick
     {
         return sum(r) - sum(l);
     }
-
-    int select(const T &k)
+    // 求小于等于 s 的最小下标
+    int kth(T s)
     {
-        int x = 0;
-        T cur{};
-        for (int i = 1 << (int)std::log2(n); i; i /= 2)
+        int pos = 0;
+        for (int j = 18; j >= 0; j--)
         {
-            if (x + i <= n && cur + a[x + i - 1] <= k)
+            if (pos + (1 << j) <= n && a[pos + (1 << j)] <= s)
             {
-                x += i;
-                cur = cur + a[x - 1];
+                pos += (1 << j);
+                s -= a[pos];
             }
         }
-        return x;
+        return pos;
     }
 };
