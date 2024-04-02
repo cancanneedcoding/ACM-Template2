@@ -1,13 +1,11 @@
-
 // 对顶堆：动态维护区间内前 k 小元素之和
-template <typename T>
-class   
+class KThMinMax
 {
 public:
     multiset<ll> low, high;
     ll sum = 0;
     ll k;
-    KThMinMax<T>(ll k) : k(k), sum(0)
+    KThMinMax(ll _k) : k(_k)
     {
         low.clear();
         high.clear();
