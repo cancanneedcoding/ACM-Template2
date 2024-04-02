@@ -68,6 +68,14 @@ https://atcoder.jp/contests/abc223/tasks/abc223_f 1641
 
 - 线段树维护区间括号是否匹配 
 
+https://atcoder.jp/contests/abc306/tasks/abc306_e  1268
+
+- 对顶堆维护区间前 $k$​ 大之和模版题
+
+https://atcoder.jp/contests/abc127/tasks/abc127_f 2000
+
+- 对顶堆维护中位数 + 两堆之和
+
 ### 动态规划
 
 https://atcoder.jp/contests/abc207/tasks/abc207_e 1820
