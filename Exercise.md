@@ -86,6 +86,16 @@ https://atcoder.jp/contests/abc339/tasks/abc339_e 1109
 
 - 线段树优化 DP
 
+https://atcoder.jp/contests/abc129/tasks/abc129_e 1550
+
+- 只对二进制位进行讨论的 DP 题
+
+https://atcoder.jp/contests/abc130/tasks/abc130_e 1676
+
+- 求两个数组的公共子序列方案数
+
+
+
 ## 数学
 
 https://atcoder.jp/contests/abc146/tasks/abc146_e  1762
