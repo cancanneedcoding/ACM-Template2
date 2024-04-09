@@ -1,3 +1,4 @@
+// 二维树状数组
 template <typename T>
 struct Fenwick {
 	int n, m;
