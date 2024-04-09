@@ -10,7 +10,11 @@ https://codeforces.com/contest/1400/problem/E  2400
 
 https://codeforces.com/contest/1696/problem/D 1900
 
-- 分治处理，由于是排列所以区间 $\max$ 和 $\min$ 唯一，按两者位置递归左区间和右区间处理
+- 分治处理，由于是排列所以区间 $\max$ 和 $\min$​ 唯一，按两者位置递归左区间和右区间处理
+
+http://oj.daimayuan.top/course/10/problem/613 代码源 OJ
+
+- 分治处理，从启发式分裂考虑，每次两头同时向中间搜索，最坏情况区间每次对半砍，类似归并排序复杂度 $O(n \log n)$。
 
 ## 图论
 
@@ -42,7 +46,7 @@ https://atcoder.jp/contests/abc343/tasks/abc343_f  1370
 
 https://codeforces.com/contest/1156/problem/E 2200
 
-- 单调栈 + 优化枚举 
+- 单调栈 + 优化枚举（启发式分裂思想）
 
 https://codeforces.com/problemset/problem/145/E 2400
 
@@ -75,6 +79,13 @@ https://atcoder.jp/contests/abc306/tasks/abc306_e  1268
 https://atcoder.jp/contests/abc127/tasks/abc127_f 2000
 
 - 对顶堆维护中位数 + 两堆之和
+
+https://codeforces.com/contest/1849/problem/E 2300
+
+- 单调栈 + 优化枚举 （启发式分裂思想）
+- 也可使用线段树解决
+
+
 
 ### 动态规划
 
