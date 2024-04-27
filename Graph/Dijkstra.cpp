@@ -1,8 +1,8 @@
-std::vector<long long> dijkstra(const std::vector<std::vector<std::pair<int, long long>>> &adj, int start)
+vector<long long> dijkstra(vector<vector<pair<int, long long>>> &adj, int start)
 {
     int n = adj.size();
-    std::vector<long long> dist(n, LLONG_MAX);
-    std::priority_queue<std::pair<long long, int>, std::vector<std::pair<long long, int>>, std::greater<>> pq;
+    vector<long long> dist(n, LLONG_MAX);
+    priority_queue<pair<long long, int>, vector<pair<long long, int>>, greater<>> pq;
 
     dist[start] = 0;
     pq.push({0, start});
