@@ -12,8 +12,7 @@ std::vector<int> discretize(const std::vector<int> &vec)
     result.reserve(vec.size());
     for (int v : vec)
     {
-        // 注意此处下标从 0 开始
-        int discrete_value = lower_bound(sorted_vec.begin(), sorted_vec.end(), v) - sorted_vec.begin();
+        int discrete_value = lower_bound(sorted_vec.begin(), sorted_vec.end(), v) - sorted_vec.begin() + 1;
         result.push_back(discrete_value);
     }
 
