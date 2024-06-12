@@ -2,6 +2,7 @@
 线段树模版来源：jiangly
 支持单点修改，维护最大值最小值总和
 特点：findFirst 和 findLast 函数
+http://oj.daimayuan.top/submission/2518278
 */
 template <class Info>
 struct SegmentTree
