@@ -67,7 +67,7 @@ struct ChairTree
     // 查询区间 [l,r] 第 k 大值
     int querymax(int l, int r, int k)
     {
-        return querymin(root[r], root[l], 1, inf, r - l + 2 - k);
+        return querymin(root[r], root[l], 1, inf, r - l + 1 - k);
     }
 
     ll querysv(int u, int v, int l, int r, int ql, int qr)
