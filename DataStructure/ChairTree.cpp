@@ -122,4 +122,28 @@ struct ChairTree
     {
         return querysum(root[r], root[l], 1, inf, ql, qr);
     }
+
+    int query(int u, int v, int lca, int lca_f, int l, int r, int k)
+    {
+        if (l == r)
+        {
+            return l;
+        }
+        int s = sum[ls[u]] + sum[ls[v]] - sum[ls[lca]] - sum[ls[lca_f]];
+        int mid = l + r >> 1;
+        if (s >= k)
+        {
+            return query(ls[u], ls[v], ls[lca], ls[lca_f], l, mid, k);
+        }
+        else
+        {
+            return query(rs[u], rs[v], rs[lca], rs[lca_f], mid + 1, r, k - s);
+        }
+    }
+
+    // 在树上点 u,v 之间查询第 k 小值
+    int query(int u, int v, int lca, int lca_f, int k)
+    {
+        return query(root[u], root[v], root[lca], root[lca_f], 1, inf, k);
+    }
 };
