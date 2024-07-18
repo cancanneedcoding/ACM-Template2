@@ -6,6 +6,8 @@ struct EDCC {
     std::vector<int> stk;
     std::vector<int> dfn, low, bel;
     int cur, cnt;
+    // 遇见傻逼重边记得打开注释
+    // std::map<std::pair<int, int>, int> edgeCount;
 
     EDCC() {}
     EDCC(int n) {
@@ -20,11 +22,15 @@ struct EDCC {
         bel.assign(n, -1);
         stk.clear();
         cur = cnt = 0;
+        // edgeCount.clear();
     }
 
     void addEdge(int u, int v) {
         adj[u].push_back(v);
         adj[v].push_back(u);
+        if (u > v)
+            swap(u, v);
+        // edgeCount[{u, v}]++;
     }
 
     void dfs(int x, int p) {
@@ -32,6 +38,7 @@ struct EDCC {
         stk.push_back(x);
 
         for (auto y : adj[x]) {
+            //&& edgeCount[{min(x, y), max(x, y)}] == 1
             if (y == p) {
                 continue;
             }
@@ -58,7 +65,11 @@ struct EDCC {
     }
 
     std::vector<int> work() {
-        dfs(0, -1);
+        for (int i = 0; i < n; i++) {
+            if (dfn[i] == -1) {
+                dfs(i, -1);
+            }
+        }
         return bel;
     }
 
@@ -68,6 +79,7 @@ struct EDCC {
         std::vector<int> siz;
         std::vector<int> cnte;
     };
+
     Graph compress() {
         Graph g;
         g.n = cnt;
@@ -78,7 +90,7 @@ struct EDCC {
             for (auto j : adj[i]) {
                 if (bel[i] < bel[j]) {
                     g.edges.emplace_back(bel[i], bel[j]);
-                } else if (i < j) {
+                } else if (i < j && bel[i] != bel[j]) {
                     g.cnte[bel[i]]++;
                 }
             }
