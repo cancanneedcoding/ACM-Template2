@@ -145,6 +145,7 @@ struct SegmentTree
 
 const ll inf = 1e18;
 // 维护区间总和，最大值，最小值
+// 注意空集合影响答案的情况
 struct Info
 {
     ll mi = inf;
