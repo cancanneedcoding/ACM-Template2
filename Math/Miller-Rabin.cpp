@@ -67,14 +67,14 @@ std::vector<ll> factorize(ll n) {
                 ++lam;
                 v = mul(v, std::abs(x - y), n);
                 if (lam % 127 == 0) {
-                    d = std::__gcd(v, n);
+                    d = std::gcd(v, n);
                     v = 1;
                 }
                 if (power == lam) {
                     x = y;
                     power *= 2;
                     lam = 0;
-                    d = std::__gcd(v, n);
+                    d = std::gcd(v, n);
                     v = 1;
                 }
             }
