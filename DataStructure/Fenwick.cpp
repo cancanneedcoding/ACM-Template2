@@ -54,4 +54,21 @@ struct Fenwick
         }
         return pos;
     }
+
+    // 求大于等于 s 的最小下标
+    int kth(T s) {
+        int pos = 0;
+        T cur = T();
+        for (int j = 20; j >= 0; j--) {
+            int next_pos = pos + (1 << j);
+            if (next_pos <= n) {
+                T next_val = cur + a[next_pos];
+                if (next_val < s) {
+                    pos = next_pos;
+                    cur = next_val;
+                }
+            }
+        }
+        return pos + 1;
+    }
 };
